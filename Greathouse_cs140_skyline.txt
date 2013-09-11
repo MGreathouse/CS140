@@ -1,0 +1,82 @@
+=============================================
+Skyline Generator - Marcus Greathouse ~ CS140
+=============================================
+
+------------
+Description:
+------------
+The purpose of this is to create a list of buildings for a skyline that fills a required area with buildings that have to be within a specific range of widths.
+
+------
+Notes:
+------
+Whenever 'random number' is mentioned, it can be assumed that a number that falls within the minimum permitted width and the maximum permitted width is obtained. How this number is obtained is up to the person using this document as changing the values of the permitted range of widths when you start may require using different methods of figuring this number out. You will be told when to get a new random number, so until told to get a new number, continue using the random number you obtained where random number is mentions.
+
+When 'smallest' is mentioned, that is a reference to the smallest number permitted for the width. This will be chosen at the beginning.
+
+When 'largest' is mentioned, that is a reference to the largest number permitted for the width. This will be chosen at the beginning. It is assumed that largest is larger than smallest.
+
+When 'skyline' is mentioned, that is a reference to the total width. This will be chosen at the beginning. It is assumed this is larger than or equal to largest.
+
+When 'left' is mentioned, that is a reference to how much room is left in your skyline for more buildings. When this is 0, your list of buildings is completed.
+
+when 'building list' is mentioned, that is a reference to the list of buildings being created.
+
+------
+Setup:
+------
+What is the width of the skyline? 	___________________
+What is the smallest width? 		___________________
+What is the largest width?		___________________
+
+Set left equal to skyline.
+
+----------
+Directions
+----------
+Part 1:
+	Get new random number.
+
+	If (left -random number) > (smallest + largets) then do the following indented section:
+		~ left = (left - random number)
+		~ add a building to the building list with a width equal to random number
+
+	If (left -random number) <= (smallest + largets) then do the following indented section:
+		~ If (left - random number) = 0 then do the following indented section:
+			~ left = (left - random number)
+			~ add a building to the building list with a width equal to random number
+
+		~ If left <= largest then do the following indented section:
+			~ add a building to the building list with a width equal to left
+			~ left = 0
+
+		~ If left >= (smallest * 2) then do the following indented section:
+			~ add a building to the building list with a width equal to smallest
+			~ left = (left - smallest)
+			~ add a building to the building list with a width equal to left
+			~ left = 0
+
+		~ If left does not equal 0 at this point then do the following indented section:
+			~ left = (left + random number)
+			~ remove the last building in the building list
+
+	If left is not zero, start Part 1 over again.
+
+	If left is zero, go to Part 2.
+
+Part 2:
+	Congratulations, you're done. your building list now fills the skyline.
+
+	Here is a cake:
+
+				__.......__
+			   ,-"``           ``"-.
+			   |;------.-'      _.-'\
+			   ||______|`  ' ' `    |
+			   ||------|            |
+			  _;|______|            |_
+			(```"""""""|            |``)
+			\'._       '-.........-'_.'/
+		     jgs '._`""===........===""`_.'
+			    ``"""=========="""``
+			
